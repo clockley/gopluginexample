@@ -15,9 +15,9 @@ func main() {
 	}
 	var info *shared.PluginInfo
 
-	var init = symName.(func() (*shared.PluginInfo, error))
+	var infoFunc = symName.(func() *shared.PluginInfo)
 
-	info, _ = init()
+	info = infoFunc()
 	if info.MethodMap != nil {
 		if info.MethodMap[shared.SessionUserLogin] != nil {
 			f := info.MethodMap[shared.SessionUserLogin].(func())
