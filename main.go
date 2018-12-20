@@ -18,6 +18,10 @@ func main() {
 	var infoFunc = symName.(func() *shared.PluginInfo)
 
 	info = infoFunc()
+	if info.Init != nil {
+		info.Init(nil, nil)
+	}
+
 	if info.MethodMap != nil {
 		if info.MethodMap[shared.SessionUserLogin] != nil {
 			f := info.MethodMap[shared.SessionUserLogin].(func())
