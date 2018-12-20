@@ -15,3 +15,5 @@ type PluginInfo struct {
 	Dependencies []string // IDs of plugins this one depends on (requires)
 	MethodMap    map[Events]interface{}
 }
+
+type PluginInfoFunc func() (*PluginInfo, error)
